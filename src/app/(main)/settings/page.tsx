@@ -2,7 +2,7 @@ import { ThemeToggle } from "@/components/global/ThemeToggle";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Metadata } from "next";
-import { Settings, Palette, Monitor, Bell } from "lucide-react";
+import { Settings, Palette, Bell } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 
 export const metadata: Metadata = {
