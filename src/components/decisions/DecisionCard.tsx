@@ -32,7 +32,7 @@ export function DecisionCard({ decision: initialDecision }: DecisionCardProps) {
 
 	return (
 		<Card className="overflow-hidden transition-all hover:shadow-md border-muted">
-			<CardHeader className="bg-muted/30 pb-4">
+			<CardHeader className="bg-muted/30 py-2">
 				<div className="flex justify-between items-start gap-4">
 					<div className="space-y-1.5 flex-1">
 						<div className="flex items-center gap-2 flex-wrap">
