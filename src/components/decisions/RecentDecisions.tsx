@@ -28,7 +28,7 @@ export function RecentDecisions({ decisions }: RecentDecisionsProps) {
 					{decisions.map((decision) => (
 						<Link
 							key={decision.id}
-							href={`/decisions/${decision.id}`}
+							href={`/decisions`}
 							className="flex items-center justify-between p-4 rounded-lg border bg-card/50 transition-colors hover:bg-muted/50 pointer-events-none opacity-50"
 						>
 							<div className="min-w-0 flex-1">

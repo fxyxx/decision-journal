@@ -60,7 +60,7 @@ export default async function DecisionsPage({ searchParams }: DecisionsPageProps
 			<div className="flex flex-col gap-6 border-b pb-6">
 				<div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
 					<div>
-						<h1 className="text-3xl font-bold tracking-tight mb-2">Decision Journal</h1>
+						<h1 className="text-3xl font-bold tracking-tight mb-2">Decisions</h1>
 						<p className="text-muted-foreground flex items-center gap-2">
 							<BookOpen className="w-4 h-4" />
 							Total entries: <span className="font-medium text-foreground">{decisions.length}</span>
