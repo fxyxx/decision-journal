@@ -1,4 +1,4 @@
-<div align="center">
+<div style="text-align: center">
 
 # 🧠 Decision Journal
 
@@ -133,7 +133,7 @@ src/
 
     Run the following SQL in your Supabase SQL Editor:
 
-    ```sql
+    ```
     CREATE TABLE decisions (
       id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
       user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
