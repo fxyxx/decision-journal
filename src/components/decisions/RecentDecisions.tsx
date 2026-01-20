@@ -10,7 +10,7 @@ interface RecentDecisionsProps {
 
 export function RecentDecisions({ decisions }: RecentDecisionsProps) {
 	return (
-		<Card className="lg:col-span-2">
+		<Card className="overflow-hidden">
 			<CardHeader className="flex flex-row items-center justify-between">
 				<div>
 					<CardTitle>Recent Decisions</CardTitle>

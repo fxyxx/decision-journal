@@ -30,7 +30,7 @@ export async function Header() {
 						</Link>
 					</nav>
 				</div>
-				<div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+				<div className="flex flex-1 items-center justify-end space-x-2">
 					<UserProfileDropdown email={email} />
 				</div>
 			</div>

@@ -52,8 +52,8 @@ export function DashboardCharts({ biasData, categoryData }: DashboardChartsProps
 	}, [coloredCategoryData]);
 
 	return (
-		<div className="grid gap-4">
-			<Card className="flex flex-col">
+		<div className="grid gap-4 overflow-hidden">
+			<Card className="flex flex-col overflow-hidden">
 				<CardHeader className="items-center pb-0">
 					<CardTitle>Categories Distribution</CardTitle>
 					<CardDescription>Decisions by category</CardDescription>
@@ -107,7 +107,7 @@ export function DashboardCharts({ biasData, categoryData }: DashboardChartsProps
 					</ChartContainer>
 				</CardContent>
 			</Card>
-			<Card>
+			<Card className="overflow-hidden">
 				<CardHeader className="items-center pb-4">
 					<CardTitle>Biases Profile</CardTitle>
 					<CardDescription>Summary of cognitive biases in your decisions</CardDescription>

@@ -45,13 +45,7 @@ export default async function HomePage() {
 				</div>
 			</div>
 
-			{decisions.length === 0 ? (
-				<EmptyState />
-			) : (
-				<div className="grid gap-6 lg:grid-cols-2">
-					<RecentDecisions decisions={decisions} />
-				</div>
-			)}
+			{decisions.length === 0 ? <EmptyState /> : <RecentDecisions decisions={decisions} />}
 		</div>
 	);
 }
