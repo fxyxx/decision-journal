@@ -3,9 +3,9 @@ import { DecisionsList } from "@/components/decisions/DecisionsList";
 import { DecisionsEmptyState } from "@/components/decisions/DecisionsEmptyState";
 import { DecisionsHeader } from "@/components/decisions/DecisionsHeader";
 import { DecisionsPagination } from "@/components/decisions/DecisionsPagination";
-import { parseSearchParams, sortByScore, type DecisionSearchParams } from "@/lib/helpers/decisions";
+import { parseSearchParams, sortByScore } from "@/lib/helpers/decisions";
 import { paginate, buildPaginationUrl } from "@/lib/helpers/pagination";
-import type { Decision } from "@/types/decision";
+import type { Decision, DecisionSearchParams } from "@/types/decision";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

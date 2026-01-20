@@ -15,7 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "DecisionJournal",
+	title: {
+		template: "%s | DecisionJournal",
+		default: "DecisionJournal",
+	},
 	description: "AI-Powered Decision Journal",
 	icons: {
 		icon: "/favicon.ico",
