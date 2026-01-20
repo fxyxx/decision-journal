@@ -7,9 +7,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { register } from "@/actions/auth";
 import { AuthHeader } from "@/components/auth/AuthHeader";
-import { ErrorAlert } from "@/components/shared/ErrorAlert";
 import { SocialLogin } from "@/components/auth/SocialLogin";
 import { AuthState } from "@/types/auth";
+import { ErrorAlert } from "@/components/ui/error-alert";
 
 const initialState: AuthState = {
 	errors: [],
