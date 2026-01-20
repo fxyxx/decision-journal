@@ -18,10 +18,10 @@ export default async function ProfilePage() {
 	const createdAt = user?.created_at ? new Date(user.created_at) : null;
 	const formattedDate = createdAt
 		? createdAt.toLocaleDateString("en-US", {
-			year: "numeric",
-			month: "long",
-			day: "numeric",
-		})
+				year: "numeric",
+				month: "long",
+				day: "numeric",
+			})
 		: "Unknown";
 
 	return (

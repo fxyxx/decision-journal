@@ -1,26 +1,31 @@
 "use client";
 
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { formatDistanceToNow } from "date-fns";
 import { enUS } from "date-fns/locale";
 import { Loader2, Sparkles, Brain, AlertTriangle, Lightbulb, Target, RefreshCw } from "lucide-react";
-import { useDecisionRealtime } from "@/hooks/useDecisionRealtime";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 import type { Decision } from "@/types/decision";
+import type { AnalysisResult } from "@/lib/schemas/analysis";
 import { analyzeDecision } from "@/actions/analyze-decision";
 
 interface DecisionCardProps {
 	decision: Decision;
 }
 
-export function DecisionCard({ decision: initialDecision }: DecisionCardProps) {
-	const decision = useDecisionRealtime(initialDecision);
+export function DecisionCard({ decision }: DecisionCardProps) {
 	const { analysis, is_analyzing } = decision;
+	const [regeneratingFrom, setRegeneratingFrom] = useState<AnalysisResult | null>(null);
+
+	const isRegenerating = regeneratingFrom !== null && regeneratingFrom === analysis;
+	const isLoading = is_analyzing || isRegenerating;
 
 	const handleRegenerate = async () => {
+		setRegeneratingFrom(analysis);
 		await analyzeDecision(decision.id, decision.user_id);
 	};
 
@@ -37,7 +42,7 @@ export function DecisionCard({ decision: initialDecision }: DecisionCardProps) {
 					<div className="space-y-1.5 flex-1">
 						<div className="flex items-center gap-2 flex-wrap">
 							<CardTitle className="text-lg leading-tight">{decision.title}</CardTitle>
-							{is_analyzing || !analysis ? (
+							{isLoading || !analysis ? (
 								<Badge
 									variant="outline"
 									className="animate-pulse bg-blue-50 text-blue-600 border-blue-200 gap-1 h-6"
@@ -124,10 +129,10 @@ export function DecisionCard({ decision: initialDecision }: DecisionCardProps) {
 									variant="ghost"
 									size="sm"
 									onClick={handleRegenerate}
-									disabled={is_analyzing}
+									disabled={isLoading}
 									className="h-7 px-2 text-xs text-indigo-600 hover:text-indigo-700 hover:bg-indigo-100 dark:text-indigo-400 dark:hover:bg-indigo-900/30"
 								>
-									{is_analyzing ? (
+									{isLoading ? (
 										<Loader2 className="h-3 w-3 animate-spin mr-1" />
 									) : (
 										<RefreshCw className="h-3 w-3 mr-1" />

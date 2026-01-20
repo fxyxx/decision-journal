@@ -5,6 +5,7 @@ import { openai } from "@ai-sdk/openai";
 import { generateText, Output } from "ai";
 import { AnalysisSchema } from "@/lib/schemas/analysis";
 import { systemPrompt } from "@/lib/promts/decisios-analysis";
+import { revalidatePath } from "next/cache";
 
 export async function analyzeDecision(decisionId: string, userId: string) {
 	const supabase = await createClient();
@@ -30,8 +31,10 @@ export async function analyzeDecision(decisionId: string, userId: string) {
 		});
 
 		await supabase.from("decisions").update({ analysis: analysisResult, is_analyzing: false }).eq("id", decisionId);
+		revalidatePath("/decisions");
 	} catch (error) {
 		console.error("Background Analysis Failed:", error);
 		await supabase.from("decisions").update({ is_analyzing: false }).eq("id", decisionId);
+		revalidatePath("/decisions");
 	}
 }

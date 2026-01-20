@@ -2,7 +2,8 @@ import { createClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Plus, BookOpen } from "lucide-react";
-import { DecisionCard } from "@/components/decisions/DecisionCard";
+import { DecisionsList } from "@/components/decisions/DecisionsList";
+import { DecisionsEmptyState } from "@/components/decisions/DecisionsEmptyState";
 import { DecisionsFilters } from "@/components/decisions/DecisionsFilters";
 import { parseSearchParams, sortByScore, type DecisionSearchParams } from "@/lib/helpers/decisions";
 import type { Decision } from "@/types/decision";
@@ -81,28 +82,9 @@ export default async function DecisionsPage({ searchParams }: DecisionsPageProps
 
 			<div className="grid gap-6">
 				{decisions.length > 0 ? (
-					<div className="grid grid-cols-1 gap-6">
-						{decisions.map((decision) => (
-							<DecisionCard key={decision.id} decision={decision} />
-						))}
-					</div>
+					<DecisionsList decisions={decisions} userId={user.id} />
 				) : (
-					<div className="flex flex-col items-center justify-center py-16 text-center border-2 border-dashed rounded-xl bg-muted/10">
-						<div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-4">
-							<BookOpen className="w-8 h-8 text-muted-foreground/50" />
-						</div>
-						<h3 className="text-xl font-semibold mb-2">History is empty</h3>
-						<p className="text-muted-foreground max-w-sm mb-6">
-							You haven&apos;t recorded any decisions yet. Start keeping a journal now to improve your
-							thinking.
-						</p>
-						<Button asChild variant="default">
-							<Link href="/decisions/new">
-								<Plus className="mr-2 h-4 w-4" />
-								Add first entry
-							</Link>
-						</Button>
-					</div>
+					<DecisionsEmptyState userId={user.id} />
 				)}
 			</div>
 		</div>
